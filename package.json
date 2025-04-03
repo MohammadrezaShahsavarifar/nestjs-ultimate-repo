@@ -1,0 +1,22 @@
+{
+  "name": "nestjs-ultimate-repo",
+  "version": "1.0.0",
+  "description": "A comprehensive repository for NestJS projects",
+  "keywords": [
+    "[\"nestjs\"",
+    "\"backend\"",
+    "\"real-world\"]"
+  ],
+  "license": "MIT",
+  "author": "Mohammadreza shahsavarifar",
+  "type": "commonjs",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "example": "examples",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest"
+  }
+}
