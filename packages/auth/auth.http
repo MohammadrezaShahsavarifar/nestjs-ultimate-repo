@@ -1,0 +1,75 @@
+### ثبت‌نام کاربر جدید
+POST http://localhost:3000/auth/register
+Content-Type: application/json
+
+{
+  "username": "testuser",
+  "email": "test@example.com",
+  "password": "Password123!",
+  "firstName": "کاربر",
+  "lastName": "تست"
+}
+
+### ورود به سیستم
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+  "username": "testuser",
+  "password": "Password123!"
+}
+
+### دریافت پروفایل کاربر
+GET http://localhost:3000/auth/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXJuYW1lIjoidGVzdHVzZXIiLCJyb2xlcyI6WyJ1c2VyIl0sInBlcm1pc3Npb25zIjpbXSwiaWF0IjoxNzQzOTQxOTM4LCJleHAiOjE3NDM5NDU1Mzh9.UlM78LDpy1McWVHxDL2YLUZCKeKKQayYEr6dHJDFhIQ
+
+### تازه‌سازی توکن
+POST http://localhost:3000/auth/refresh-token
+Content-Type: application/json
+
+{
+  "refreshToken": "18395393-6bd4-4acd-bac6-3643db9c5ff2"
+}
+
+### تغییر رمز عبور
+POST http://localhost:3000/auth/change-password
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXJuYW1lIjoidGVzdHVzZXIiLCJyb2xlcyI6WyJ1c2VyIl0sInBlcm1pc3Npb25zIjpbXSwiaWF0IjoxNzQzOTQyMDQ5LCJleHAiOjE3NDM5NDU2NDl9.M55bMveiSCpqlLWJ1pmweM9NJPkpT0eTVCbZHUz3k3k
+
+{
+  "oldPassword": "Password123!",
+  "newPassword": "NewPassword123!"
+}
+
+### خروج از سیستم
+POST http://localhost:3000/auth/logout
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXJuYW1lIjoidGVzdHVzZXIiLCJyb2xlcyI6WyJ1c2VyIl0sInBlcm1pc3Npb25zIjpbXSwiaWF0IjoxNzQzOTQyMDQ5LCJleHAiOjE3NDM5NDU2NDl9.M55bMveiSCpqlLWJ1pmweM9NJPkpT0eTVCbZHUz3k3k
+
+### درخواست بازیابی رمز عبور
+POST http://localhost:3000/auth/password-reset/request
+Content-Type: application/json
+
+{
+  "email": "test@example.com"
+}
+
+### تأیید توکن بازیابی رمز عبور
+POST http://localhost:3000/auth/password-reset/verify
+Content-Type: application/json
+
+{
+  "token": "{{resetToken}}"
+}
+
+### بازیابی رمز عبور
+POST http://localhost:3000/auth/password-reset/reset
+Content-Type: application/json
+
+{
+  "token": "{{resetToken}}",
+  "newPassword": "NewPassword123!"
+}
+
+### دسترسی به داده‌های ادمین (نیاز به نقش ادمین)
+GET http://localhost:3000/auth/admin
+Authorization: Bearer {{accessToken}}
